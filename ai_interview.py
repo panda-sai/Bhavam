@@ -3,12 +3,13 @@ from text_to_speech import synthesize_speech, play_audio
 from speech_to_text import record_audio, transcribe_audio
 from video_gen import generate_video, play_video
 
+GOOGLE_API_KEY= "AIzaSyCxjpR3SHdPTS9oSxP4_-dKS6zHYBMnwfQ"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 model = genai.GenerativeModel('gemini-1.5-flash')
 chat = model.start_chat(history=[])
      
-response = chat.send_message("You are Mr. Sam, a Principal Engineer with 15 years of experience at VB Interviews Private Limited. I am interviewing for a Python Developer position at your company. From now on, our conversation will be an interview scenario, with you asking me questions as if I were a candidate. Please keep the conversation concise.")
+response = chat.send_message("You are Mr. Sam, a Principal Engineer with 15 years of experience at VB Interviews Private Limited. I am interviewing for a Python Developer position at your company. From now on, our conversation will be an interview scenario, with you asking me questions as if I were a candidate. Please keep the conversation concise. When you think you have enough metrics to judge, please share the feedback. Output should be in plain English only")
 print(response.text)
 i=0
 while True:
