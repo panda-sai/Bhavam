@@ -1,0 +1,4 @@
+AIzaSyCxjpR3SHdPTS9oSxP4_-dKS6zHYBMnwfQ
+
+
+py -3.8 inference.py --driven_audio "C:\Temp Project\ai_speech0.wav" --source_image "C:\Users\saipa\Downloads\image.png" --result_dir ./results --still --preprocess full --enhancer gfpgan
