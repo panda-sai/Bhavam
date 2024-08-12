@@ -4,6 +4,8 @@
 
 The AI Interview Preparation App is an advanced tool designed to help users simulate real-life interview scenarios and receive personalized feedback. Powered by AI and leveraging Google's Gemini API, the app allows users to practice answering interview questions tailored to their desired job role and experience level. The app not only conducts the interview but also provides insightful feedback, helping users improve their performance and build confidence for their actual interviews.
 
+## Demo Video 
+
 [![DEMO VIDEO](https://img.youtube.com/vi/45nmovxQYHI/0.jpg)](https://youtu.be/45nmovxQYHI)
 
 
