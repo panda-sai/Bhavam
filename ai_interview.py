@@ -3,7 +3,6 @@ from text_to_speech import synthesize_speech, play_audio
 from speech_to_text import record_audio, transcribe_audio
 from video_gen import generate_video, play_video
 
-GOOGLE_API_KEY= "AIzaSyCxjpR3SHdPTS9oSxP4_-dKS6zHYBMnwfQ"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 model = genai.GenerativeModel('gemini-1.5-flash')
