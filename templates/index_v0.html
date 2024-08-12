@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Interviewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #conversation {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        #question {
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        #answer {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+            background-color: #007bff;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #c0c0c0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div id="conversation">
+    <h2>Bhavam AI Mock Interview</h2>
+    <div id="question">Press "Start" to begin your interview.</div>
+    <input type="text" id="answer" placeholder="Type your answer here...">
+    <br>
+    <button id="sendAnswer" onclick="sendAnswer()">Send Answer</button>
+</div>
+
+<script>
+    function startInterview() {
+        fetch('/start_interview', {
+            method: 'POST',
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('question').innerText = data.question;
+            playAudio(data.audio_file);
+        });
+    }
+
+    function sendAnswer() {
+        const answer = document.getElementById('answer').value;
+        fetch('/answer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ answer: answer })
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('question').innerText = data.question;
+            playAudio(data.audio_file);
+        });
+    }
+
+    function playAudio(file) {
+        var audio = new Audio(file);
+        audio.play();
+    }
+
+    // Start the interview as soon as the page loads
+    window.onload = startInterview;
+</script>
+
+</body>
+</html>
