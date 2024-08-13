@@ -7,7 +7,6 @@ import os
 app = Flask(__name__)
 
 # Configure the Generative AI model
-GOOGLE_API_KEY = "AIzaSyCxjpR3SHdPTS9oSxP4_-dKS6zHYBMnwfQ"
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
 chat = model.start_chat(history=[])
